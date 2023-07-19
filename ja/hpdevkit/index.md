@@ -26,15 +26,15 @@ npm start
 ```
 'npm start' コマンドは、NodeJs のスマートコントラクトをビルドし、マシン上で実行されている HotPocket クラスタにデプロイします。 また、HotPocketインスタンスからコンソール出力を出力します。 Ctrl+C を押すといつでもHotPocketコンソール出力の監視を終了することができます。 ただし、監視コンソールを終了した後もHotPocketインスタンスは引き続き実行されます。
 
-### Viewing logs
-You can re-enter the monitoring console with the command `hpdevkit logs 1`, where `1` is the HotPocket instance number you wish to monitor.
+### ログの表示
+`hpdevkit logs 1`（`1`は監視したいHotPocketインスタンス番号）コマンドで監視コンソールに再度入ることができます。
 
-### Changing the cluster size
-In order to resize the HotPocket cluster, you need to delete and re-create it:
-1. Delete the existing cluster using the `hpdevkit clean` command.
-2. Set the HP_CLUSTER_SIZE environment variable to the size you want.
+### クラスタサイズの変更
+HotPocketクラスタのサイズを変更するには、削除して再作成する必要があります。
+1. `hpdevkit clean` コマンドを使用して既存のクラスタを削除します。
+2. HP_CLUSTER_SIZE 環境変数に必要なサイズを設定します。
     ```
-    # Windows (command prompt)
+    # Windows (コマンドプロンプト)
     set HP_CLUSTER_SIZE=5
 
     # Windows (powershell)
@@ -43,19 +43,19 @@ In order to resize the HotPocket cluster, you need to delete and re-create it:
     # Linux (bash)
     export HP_CLUSTER_SIZE=5
     ```
-3. Deploy your contract again with `npm start`.
+3. `npm start` で再度コントラクトをデプロイします。
 
-## Creating HotPocket client application
-You can use the HotPocket developer kit to generate a HotPocket client application such that everything is pre-configured. Here, we are creating a NodeJs client (This assumes you have prior experience with developing NodeJs applications):
+## HotPocketクライアントアプリケーションの作成
+HotPocket開発者キットを使用して、事前に設定されたHotPocketクライアントアプリケーションを生成することができます。 ここでは、Node.js クライアントを作成します(これは、Node.js アプリケーションの開発経験があることを前提としています)。
 ```
 hpdevkit gen nodejs blank-client myclient
 cd myclient
 npm install
 node myclient.js
 ```
-This will start the client application and connect a HotPocket node listening to port 8081. Also note that you need to have HotPocket nodes running on your machine for the client to connect.
+これによりクライアントアプリケーションが起動し、ポート8081をリッスンしているHotPocketノードに接続します。 クライアントが接続するには、マシン上でHotPocketノードが実行されている必要があります。
 
-## Advanced usage
+## 高度な使用方法
 ```
 # Deploy contract files directory to the cluster (`npm start` internally uses this command to deploy)
 hpdevkit deploy <contract files directory>
@@ -79,9 +79,9 @@ hpdevkit stop <node number>
 hpdevkit spawn
 ```
 
-If the contract files directory also contains a file named `hp.cfg.override`, it will be used to override the hp.cfg of all nodes. This can be used to set contract-specific parameters like 'bin_path' and 'bin_args'
+コントラクトファイルディレクトリに`hp.cfg.override`というファイルがある場合、そのファイルはすべてのノードのhp.cfgを上書きするために使われます。 'bin_path' や 'bin_args' のようなコントラクト固有のパラメータを設定するために使用できます。
 
-An example `hp.cfg.override` file for a NodeJs application (the HotPocket developer kit NodeJs starter contract automatically includes this file for you):
+NodeJs アプリケーション用の `hp.cfg.override` ファイルの例 (HotPocket 開発キット NodeJs スターターコントラクトには、このファイルが自動的に含まれています):
 ```
 {
     "contract": {
@@ -91,48 +91,48 @@ An example `hp.cfg.override` file for a NodeJs application (the HotPocket develo
 }
 ```
 
-### Inspect contract files of all nodes
-You can inspect the files of all the nodes of the cluster using Docker Desktop.
+### すべてのノードのコントラクトファイルを調べる
+Docker Desktopを使用して、クラスタのすべてのノードのファイルを調べることができます。
 <img height="500" alt="image" src="https://user-images.githubusercontent.com/33562092/236630735-f39a3da0-78ca-4e91-9ef0-5c6400bd5bae.png" />
 
 
-## Environment variables
-`hpdevkit` CLI supports the following environment variables:
+## 環境変数
+`hpdevkit` CLI は以下の環境変数をサポートしています。
 
-| Name                 | Description                                                                      | Default value                                   |
-| -------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------- |
-| HP_CLUSTER_SIZE    | The number of nodes in the cluster. This only takes effect with a fresh cluster. | `3`                                             |
-| HP_DEFAULT_NODE    | The node which the 'deploy' command uses to display logs.                        | `1`                                             |
-| HP_DEVKIT_IMAGE    | The Docker image to be used for devkit cluster management.                       | `evernodedev/hpdevkit`                          |
-| HP_INSTANCE_IMAGE  | The Docker image to be used for HotPocket instances.                             | `evernodedev/hotpocket:latest-ubt.20.04-njs.16` |
-| HP_USER_PORT_BEGIN | The starting user port number for the cluster.                                   | `8081`                                          |
-| HP_PEER_PORT_BEGIN | The starting peer port number for the cluster.                                   | `22861`                                         |
+| 名前                   | 説明                               | デフォルト値                                          |
+| -------------------- | -------------------------------- | ----------------------------------------------- |
+| HP_CLUSTER_SIZE    | クラスタ内のノード数。 これは新しいクラスタでのみ有効です。   | `3`                                             |
+| HP_DEFAULT_NODE    | 'deploy' コマンドがログを表示するために使用するノード。 | `1`                                             |
+| HP_DEVKIT_IMAGE    | devkitクラスタ管理に使用するDockerイメージ。     | `evernodedev/hpdevkit`                          |
+| HP_INSTANCE_IMAGE  | HotPocketインスタンスに使用するDockerイメージ。  | `evernodedev/hotpocket:latest-ubt.20.04-njs.16` |
+| HP_USER_PORT_BEGIN | クラスタの開始ユーザポート番号。                 | `8081`                                          |
+| HP_PEER_PORT_BEGIN | クラスタの開始ピアポート番号。                  | `22861`                                         |
 
-## Updates
-Run one of the following commands to update `hpdevkit` to the latest version, and update the supporting docker images:
-- Using hpdevkit CLI
+## 更新
+以下のいずれかのコマンドを実行して、 `hpdevkit` を最新バージョンに更新し、サポートされているdocker imagesを更新します。
+- hpdevkit CLI を使用する
     ```
     hpdevkit update
     ```
 
-- Using npm
+- npm を使用する
     ```
     npm update hpdevkit -g
     ```
 
-**NOTE: You need to re-deploy your contracts for the new changes to take effect.**
+**注記: 新しい変更を有効にするには、コントラクトを再デプロイする必要があります。**
 
-## Uninstall
-Run the following command to uninstall `hpdevkit` and the supporting docker images and containers:
+## アンインストール
+以下のコマンドを実行して、 `hpdevkit` とサポートされているdocker イメージとコンテナをアンインストールします。
 
-- Using hpdevkit CLI
+- hpdevkit CLI を使用する
     ```
     hpdevkit uninstall
     ```
 
-**NOTE: Uninstalling from hpdevkit CLI is recommended. If you uninstall using npm, you will have to clean the hpdevkit supporting docker images and containers manually.**
+**注記: hpdevkit CLI からアンインストールすることを推奨します。 npm を使用してアンインストールする場合、docker イメージとコンテナをサポートする hpdevkit を手動でクリーンアップする必要があります。**
 
-_**NOTE:** In Linux platforms, you will need root privileges to execute updates and uninstallations. Hence, add `sudo` to the above commands._
+_**注記:** Linux プラットフォームでは、更新とアンインストールを実行するには、root 権限が必要です。 したがって、上記のコマンドに `sudo` を追加します。_
 
-## Reporting issues
-Report issues [here](https://github.com/HotPocketDev/evernode-sdk/issues).
+## 問題を報告する
+[問題を報告する](https://github.com/HotPocketDev/evernode-sdk/issues).
