@@ -1,54 +1,54 @@
-# Evernode developer kit
-Evernode uses HotPocket as its smart contract engine. Once you have developed a HotPocket smart contract on your PC, you can deploy it to Evernode using Evernode developer kit.
+# Evernode開発者キット
+EvernodeはHotPocketをスマートコントラクトエンジンとして使用しています。 PC上でHotPocketスマートコントラクトを開発する場合、Evernode開発者キットを使用してEvernodeにデプロイすることができます。
 
-## Installation
+## インストール
 
-### Prerequisites
-Evernode developer kit requires you to install [NodeJs](https://nodejs.org/en/) on your development machine.
+### 前提条件
+Evernodeの開発者キットでは、開発マシンに [NodeJs](https://nodejs.org/en/) をインストールする必要があります。
 
-### Supports cross platform
-This is an npm global package which supports both Linux and Windows
-1. Install [prerequisites](#prerequisites).
-2. Run the following command to install `evdevkit` on your machine.
+### クロスプラットフォームのサポート
+これはLinux と Windows の両方をサポートする npm グローバルパッケージです。
+1. [前提条件](#prerequisites) をインストールします。
+2. 以下のコマンドを実行して、ご使用のマシンに `evdevkit` をインストールします。
     ```
     npm i evdevkit -g
     ```
 
-_**NOTE:** In Linux platforms, installation requires root privileges. Hence, add `sudo` to the above command._
+_**注記:** Linux プラットフォームでは、インストールには root 権限が必要です。 したがって、上記のコマンドに `sudo` を追加します。_
 
-## Acquiring instance from Evernode
-You can use the Evernode developer kit to acquire instances from Evernode. This will create you a fresh Evernode instance where you can deploy your smart contracts.
-- You are required to set `EV_TENANT_SECRET` and `EV_USER_PRIVATE_KEY` [environment variables](#environment-variables) before acquiring the instance.
-- To override Evernode instance's configuration You can create a [HotPocket configuration](../hotpocket/reference-configuration.md) file and set its path as `EV_INSTANCE_CONFIG_PATH` [environment variable](#environment-variables).
-- Following command will create an instance in a random host. Given configurations will be populated if `EV_INSTANCE_CONFIG_PATH` is given.
+## Evernodeからのインスタンス取得
+Evernode開発者キットを使ってEvernodeからインスタンスを取得することができます。 これにより、スマートコントラクトをデプロイできる新しいEvernodeインスタンスが作成されます。
+- `EV_TENANT_SECRET` と `EV_USER_PRIVATE_KEY` [環境変数](#environment-variables) をインスタンスを取得する前に設定する必要があります。
+- Evernodeインスタンスの設定を上書きするには [HotPocket設定](../hotpocket/reference-configuration.md) ファイルを作成し、パスを `EV_INSTANCE_CONFIG_PATH` [環境変数](#environment-variables) に設定します。
+- 次のコマンドは、ランダムなホストにインスタンスを作成します。 指定された設定は `EV_INSTANCE_CONFIG_PATH` が与えられた場合に生成されます。
 ```
 evdevkit acquire
 ```
-- This will return the acquired instance details.
+- これは取得したインスタンスの詳細を返します。
 
-## Deploying a contract to Evernode
-You can deploy your already implemented [smart contract](../hotpocket/concepts.md#smart-contract) to the acquired Evernode instance.
+## Evernodeへのコントラクトのデプロイ
+既に実装されている [スマートコントラクト](../hotpocket/concepts.md#smart-contract) を、取得した Evernode インスタンスにデプロイできます。
 
-### Creating the deployable contract package
-You can package your contract using evdevkit.
-- To override Evernode instance's contract configurations You can create a [Contract configuration](../hotpocket/reference-configuration.md#contract) file and set its path as `EV_CONTRACT_CONFIG_PATH` [environment variable](#environment-variables).
+### デプロイ可能なコントラクトパッケージの作成
+evdevkitを使用してコントラクトをパッケージ化することができます。
+- Evernodeインスタンスのコントラクト設定を上書きするには [コントラクト設定](../hotpocket/reference-configuration.md#contract) ファイルを作成し、そのパスを `EV_CONTRACT_CONFIG_PATH` [環境変数](#environment-variables) に設定します。
 ```
 # evdevkit bundle <path to contract directory> <public key of the instance> <contract binary> -a <contract binary arguments>
-evdevkit bundle $HOME/contract ed060a4aae0ec9183e4869e1490e908c9a9a3fd72816021c823ecd7d052e6e02d2 /usr/bin/node -a index.js
+evdevkit bundle $HOME/contract ed060ae0ec9183e4869e1490e908c9a9a9a3fd72816021c823ecd7d052e6e02d2 /usr/bin/node -a index.js
 ```
-- This will return the path to the created contract bundle.
+- 作成されたコントラクトバンドルへのパスが返されます。
 
-### Uploading a contract to Evernode
-You can upload your contract bundle to the Evernode instance
-- You are required to set `EV_USER_PRIVATE_KEY` [environment variable](#environment-variables) before upload the contract.
+### コントラクトをEvernodeにアップロード
+コントラクトのバンドルを Evernode インスタンスにアップロードできます
+- コントラクトをアップロードするには、 `EV_USER_PRIVATE_KEY` [環境変数](#environment-variables) を設定してください。
 ```
 # evdevkit deploy <path to contract bundle> <IP of the instance> <User port of the instance>
 evdevkit deploy $HOME/bundle/bundle.zip 45.76.238.97 26201
 ```
 
-### Changing tenant info
-In order to change the tenant info you need to override the [environment variables](#environment-variables):
-1. Set the HP_CLUSTER_SIZE environment variable to the size you want.
+### テナント情報の変更
+テナント情報を変更するには、[環境変数](#environment-variables)を上書きする必要があります：
+1. HP_CLUSTER_SIZE 環境変数に必要なサイズを設定します。
     ```
     # Windows (command prompt)
     set EV_TENANT_SECRET=snmyH19JLWVaUJKtM4cNxTT6t38eA
@@ -62,9 +62,9 @@ In order to change the tenant info you need to override the [environment variabl
     export EV_TENANT_SECRET=snmyH19JLWVaUJKtM4cNxTT6t38eA
     export EV_USER_PRIVATE_KEY=ed7b78ba4ffc9b7a55e427ff1ddb799ab1af59c6a9ab92e5f227815b04ab70e346831653e22c8293afac43694879c4083e1d7581b4326fcba423e3392e068028fe
     ```
-3. Now if you [acquire](#acquiring-instance-from-evernode) instance, Instance will be created using the from the new tenant.
+3. これで[acquire](#acquiring-instance-from-evernode)すると、新しいテナントからインスタンスが作成されます。
 
-## Advanced usage
+## 高度な使用方法
 ```
 # Do [acquire](#acquiring-instance-from-evernode), [bundle](#creating-the-deployable-contract-package) and [deploy](#uploading-a-contract-to-evernode) in one command
 evdevkit acquire-and-deploy <path to contract directory> <contract binary> -a <contract binary arguments>
@@ -82,7 +82,7 @@ evdevkit keygen
 evdevkit cluster-create <cluster size> <path to contract directory> <contract binary> -a <contract binary arguments>
 ```
 
-An example HotPocket configuration:
+HotPocketの設定例：
 ```json
 {
     "contract": {
@@ -99,7 +99,7 @@ An example HotPocket configuration:
 }
 ```
 
-An example HotPocket contract configuration:
+HotPocketコントラクトの設定例:
 ```json
 {
     "consensus": {
@@ -108,32 +108,32 @@ An example HotPocket contract configuration:
 }
 ```
 
-_See [HotPocket configuration reference](/hotpocket/reference-configuration.md) for more details._
+_詳細は [HotPocket設定リファレンス](/hotpocket/reference-configuration.md) をご覧ください。_
 
-## Environment variables
-`evdevkit` CLI supports the following environment variables:
+## 環境変数
+`evdevkit` CLI は以下の環境変数をサポートしています。
 
-| Name                      | Description                                                                    |
-| ------------------------- | ------------------------------------------------------------------------------ |
-| EV_TENANT_SECRET        | Tenant XRPL account secret.                                                    |
-| EV_USER_PRIVATE_KEY     | Private key of the contract client (Can be generated using "evdevkit keygen"). |
-| EV_INSTANCE_CONFIG_PATH | (Optional) Path of the locally created HotPocket instance configuration file.  |
-| EV_CONTRACT_CONFIG_PATH | (Optional) Path of the locally created HotPocket contract configuration file.  |
+| 名前                        | 説明                                              |
+| ------------------------- | ----------------------------------------------- |
+| EV_TENANT_SECRET        | テナントのXRPLアカウントの秘密鍵。                             |
+| EV_USER_PRIVATE_KEY     | コントラクトクライアントの秘密鍵(「evdevkit keygen」を使用して生成できます)。 |
+| EV_INSTANCE_CONFIG_PATH | (任意) ローカルに作成されたHotPocketインスタンス構成ファイルのパス。        |
+| EV_CONTRACT_CONFIG_PATH | (任意) ローカルに作成されたHotPocketコントラクト設定ファイルのパス。        |
 
-## Updates
-Run following command to update `evdevkit` to the latest version:
+## 更新
+`evdevKit` を最新バージョンに更新するには、以下のコマンドを実行してください。
 ```
-npm update evdevkit -g
+npm update evdevKit -g
 ```
 
-## Uninstall
-Run the following command to uninstall `evdevkit`:
+## アンインストール
+`evdevKit` をアンインストールするには、次のコマンドを実行します。
 
 ```
 npm uninstall evdevkit -g
 ```
 
-_**NOTE:** In Linux platforms, you will need root privileges to execute updates and uninstallations. Hence, add `sudo` to the above commands._
+_**注記:** Linux プラットフォームでは、更新とアンインストールを実行するには、root 権限が必要です。 したがって、上記のコマンドに `sudo` を追加します。_
 
-## Reporting issues
-Report issues [here](https://github.com/HotPocketDev/evernode-sdk/issues).
+## 問題を報告する
+[問題を報告する](https://github.com/HotPocketDev/evernode-sdk/issues).
