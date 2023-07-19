@@ -1,30 +1,30 @@
-# HotPocket developer kit
-Evernode uses HotPocket as its smart contract engine. HotPocket smart contracts can be developed using any POSIX-compliant language/framework. Using the HotPocket developer kit, you can easily develop and test HotPocket smart contracts on your local PC.
+# HotPocket開発者キット
+EvernodeはHotPocketをスマートコントラクトエンジンとして使用しています。 HotPocketスマートコントラクトは、POSIX 準拠の言語/フレームワークを使用して開発できます。 HotPocket開発者キットを使用すると、ローカルPC上で簡単にHotPocketスマートコントラクトの開発およびテストができます。
 
-## Installation
+## インストール
 
-### Prerequisites
-The HotPocket developer kit requires you to install [Docker Engine](https://docs.docker.com/engine/install/) and [NodeJs](https://nodejs.org/en/) on your development machine.
+### 前提条件
+HotPocket開発者キットでは、開発マシンに [Docker Engine](https://docs.docker.com/engine/install/) と [NodeJs](https://nodejs.org/en/) をインストールする必要があります。
 
-### Cross-platform support
-The HotPocket developer kit is a [global npm package](https://www.npmjs.com/package/hpdevkit) which supports both Linux and Windows operating systems.
-1. Install [prerequisites](#prerequisites).
-2. Run the following command to install hpdevkit on your machine:
+### クロスプラットフォーム対応
+HotPocket開発者キットは、LinuxとWindowsの両方のオペレーティングシステムをサポートする [グローバルnpmパッケージ](https://www.npmjs.com/package/hpdevkit) です。
+1. [前提条件](#prerequisites) をインストールします。
+2. 次のコマンドを実行して、お使いのマシンに hpdevkit をインストールします。
     ```
     npm i hpdevkit -g
     ```
 
-_**NOTE:** In Linux platforms, installation requires root privileges. Hence, add `sudo` to the above command._
+_**注記:** Linux プラットフォームでは、インストールには root 権限が必要です。 したがって、上記のコマンドに `sudo` を追加します。_
 
-## Creating a HotPocket smart contract
-You can use the HotPocket developer kit to generate smart contract projects such that everything is pre-configured. Here, we are creating a NodeJs smart contract (This assumes you have prior experience with developing NodeJs applications):
+## HotPocketスマートコントラクトの作成
+HotPocket開発者キットを使用して、事前に設定されたスマートコントラクトプロジェクトを生成することができます。 ここでは、Node.js のスマートコントラクトを作成します(これは、Node.js アプリケーションの開発経験があることを前提としています)。
 ```
 hpdevkit gen nodejs starter-contract myproj
 cd myproj
 npm install
 npm start
 ```
-The 'npm start' command will build and deploy the NodeJs smart contract into a HotPocket cluster running on your machine. It will also start printing the console output from the HotPocket instance. You can press Ctrl+C at any time to exit from monitoring the HotPocket console output. However, the HotPocket instance will continue to run even after you exit the monitoring console.
+'npm start' コマンドは、NodeJs のスマートコントラクトをビルドし、マシン上で実行されている HotPocket クラスタにデプロイします。 また、HotPocketインスタンスからコンソール出力を出力します。 Ctrl+C を押すといつでもHotPocketコンソール出力の監視を終了することができます。 ただし、監視コンソールを終了した後もHotPocketインスタンスは引き続き実行されます。
 
 ### Viewing logs
 You can re-enter the monitoring console with the command `hpdevkit logs 1`, where `1` is the HotPocket instance number you wish to monitor.
