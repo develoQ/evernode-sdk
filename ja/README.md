@@ -1,70 +1,70 @@
 # Evernode SDK
 
-The Evernode SDK consists of libraries and tools required to develop and deploy HotPocket smart contracts on Evernode. This repo is used to provide early access to libraries and tools that are work-in-progress and to get feedback.
+EvernodeのSDKは、Evernode上でHotPocketスマートコントラクトを開発・展開するために必要なライブラリとツールで構成されています。 このレポは、開発途中のライブラリやツールにいち早くアクセスし、フィードバックを得るために使用されます。
 
-Read [Evernode - Primer](primer.md) for an overview on Evernode.
+Evernodeの概要については、 [Evernode-Primer](primer.md) をご覧ください。
 
-## Tutorials
+## チュートリアル
 
-HotPocket is the smart contract execution and consensus engine of Evernode. HotPocket smart contracts can be developed using any POSIX-compliant language/framework. You can also develop client applications that interact with HotPocket smart contracts using web sockets. Please go through the following material to gain an understanding of HotPocket development and deployment to Evernode.
+HotPocketはEvernodeのスマートコントラクトの実行およびコンセンサスエンジンです。 HotPocketスマートコントラクトは、POSIX 準拠の言語/フレームワークを使用して開発できます。 また、Web Socketを使用してHotPocketスマートコントラクトとやり取りするクライアントアプリケーションを開発することもできます。 HotPocketの開発とEvernodeへの展開について理解するためには、以下の資料をご覧ください。
 
-1. [HotPocket concepts](hotpocket/concepts.md)
-2. [Basics tutorial](hotpocket/tutorial-basics.md)
-3. [Working with multiple nodes](hotpocket/tutorial-multinode.md)
-4. [Persisting data](hotpocket/tutorial-persistdata.md)
-5. [Read requests](hotpocket/tutorial-readreq.md)
-6. [NPL messaging](hotpocket/tutorial-npl.md)
-7. [Instance sync](hotpocket/tutorial-instance-sync.md)
-8. [Contract context](hotpocket/contract-context.md)
-9. [Deploying contracts to Evernode - single instance](evernode/tutorial-basics.md)
-10. [Deploying contracts to Evernode - cluster of instances](evernode/tutorial-cluster.md)
+1. [HotPocket の概要](hotpocket/concepts.md)
+2. [基礎チュートリアル](hotpocket/tutorial-basics.md)
+3. [複数ノードの操作](hotpocket/tutorial-multinode.md)
+4. [データの永続化](hotpocket/tutorial-persistdata.md)
+5. [読み取りリクエスト](hotpocket/tutorial-readreq.md)
+6. [NPLメッセージ](hotpocket/tutorial-npl.md)
+7. [インスタンスの同期](hotpocket/tutorial-instance-sync.md)
+8. [コントラクトの内容](hotpocket/contract-context.md)
+9. [Evernodeへのコントラクトのデプロイ - シングルインスタンス](evernode/tutorial-basics.md)
+10. [Evernodeへのコントラクトのデプロイ - インスタンスのクラスタ](evernode/tutorial-cluster.md)
 
-## Tools
+## ツール
 
-- hpdevkit - You can use [HotPocket developer kit](hpdevkit/index.md) to get started easily and test HotPocket smart contracts on your local PC. Follow the [tutorials](#tutorials) above to understand how to use it.
-- evdevkit - You can use [Evernode developer kit](evdevkit/index.md) to deploy your HotPocket smart contracts Evernode hosts. Follow the [evernode tutorial](evernode/tutorial-basics.md) to understand how to use it.
+- hpdevkit - [HotPocket 開発者キット](hpdevkit/index.md) を使用して、ローカルのPCで HotPocketスマートコントラクトを簡単にテストできます。 上の [チュートリアル](#tutorials) に従って使い方を理解してください。
+- evdevkit - [Evernode開発者キット](evdevkit/index.md) を使用してHotPocketスマートコントラクトをEvernodeホストに展開できます。 [Evernodeのチュートリアル](evernode/tutorial-basics.md) に従って使い方を理解してください。
 
-## Example code
+## コード例
 
-- [Simple echo contract (nodejs)](https://github.com/HotPocketDev/hp-nodejs-contract/blob/main/example/echo-contract.js)
-- [Example C contract](https://github.com/HotPocketDev/hp-c-contract/blob/main/example_contract.c)
-- [Evernode bootstrap contract (C++)](https://github.com/HotPocketDev/evernode-bootstrap-contract)
-- [Evernode javascript client usage examples](https://github.com/HotPocketDev/evernode-js-client/blob/main/test/test.js)
-- [Example calculator contract and client (nodejs)](https://github.com/HotPocketDev/example-calculator-contract)
+- [シンプルなechoコントラクト(nodejs)](https://github.com/HotPocketDev/hp-nodejs-contract/blob/main/example/echo-contract.js)
+- [C言語のコントラクトの例](https://github.com/HotPocketDev/hp-c-contract/blob/main/example_contract.c)
+- [Evernodeブートストラップコントラクト(C++)](https://github.com/HotPocketDev/evernode-bootstrap-contract)
+- [Evernodeのjavascriptクライアントの使用例](https://github.com/HotPocketDev/evernode-js-client/blob/main/test/test.js)
+- [計算機コントラクトとクライアントの例 (nodejs)](https://github.com/HotPocketDev/example-calculator-contract)
 
-## Libraries
+## ライブラリ
 
-### HotPocket smart contract library
+### HotPocketスマートコントラクトライブラリ
 
-- [NodeJs library](https://www.npmjs.com/package/hotpocket-nodejs-contract) ([source](https://github.com/HotPocketDev/hp-nodejs-contract))
-- [C library source](https://github.com/HotPocketDev/hp-c-contract)
+- [NodeJs ライブラリ](https://www.npmjs.com/package/hotpocket-nodejs-contract) ([ソース](https://github.com/HotPocketDev/hp-nodejs-contract))
+- [C言語ライブラリ ソース](https://github.com/HotPocketDev/hp-c-contract)
 
-### HotPocket client library
+### HotPocketクライアントライブラリ
 
-- [Javascript library](https://www.npmjs.com/package/hotpocket-js-client) for nodejs and browser. ([source](https://github.com/HotPocketDev/hp-js-client))
+- [nodejsとブラウザ用のJavascriptライブラリ](https://www.npmjs.com/package/hotpocket-js-client)。 ([ソース](https://github.com/HotPocketDev/hp-js-client))
 
-### Evernode client library
+### Evernodeクライアントライブラリ
 
-- [Javascript library](https://www.npmjs.com/package/evernode-js-client) for nodejs and browser. ([source](https://github.com/HotPocketDev/evernode-js-client))
-  - [Common client functionality](evernode/reference-api-common.md)
-  - [Hook Client Reference](evernode/reference-api-hook-clients.md)
-  - [Tenant client](evernode/reference-api-tenant.md)
-  - [Events](evernode/reference-api-events.md)
+- [nodejsとブラウザ用のJavascriptライブラリ](https://www.npmjs.com/package/evernode-js-client)。 ([ソース](https://github.com/HotPocketDev/evernode-js-client))
+  - [共通クライアント機能](evernode/reference-api-common.md)
+  - [Hookクライアントリファレンス](evernode/reference-api-hook-clients.md)
+  - [テナントクライアント](evernode/reference-api-tenant.md)
+  - [イベント](evernode/reference-api-events.md)
 
-### Community libraries
+### コミュニティライブラリ
 
-- XRPL-based Decentralized Key Management framework for HotPocket: DKM - [intro](https://devpost.com/software/decentralized-key-management-evernode) | [source](https://github.com/wojake/DKM) (by [@wojake](https://github.com/wojake))
+- HotPocket用XRPLベースの分散型鍵管理フレームワーク DKM - [紹介](https://devpost.com/software/decentralized-key-management-evernode) | [ソース](https://github.com/wojake/DKM) (by [@wojake](https://github.com/wojake))
 
-## Protocol reference
+## プロトコルリファレンス
 
-- [HotPocket Config reference](hotpocket/reference-configuration.md)
-- [HotPocket Client protocol](hotpocket/reference-client-protocol.md)
-- [HotPocket Contract protocol](hotpocket/reference-contract-protocol.md)
+- [HotPocket設定リファレンス](hotpocket/reference-configuration.md)
+- [HotPocketクライアントプロトコル](hotpocket/reference-client-protocol.md)
+- [HotPocketコントラクトプロトコル](hotpocket/reference-contract-protocol.md)
 
-## Issues and feedback
+## Issuerとフィードバック
 
-Please post any issues and feedback you have [here](https://github.com/HotPocketDev/evernode-sdk/issues).
+何か問題やフィードバックがあれば、[こちら](https://github.com/HotPocketDev/evernode-sdk/issues)に投稿してください。
 
-## Updates
+## アップデート
 
-[Subscribe here](https://github.com/HotPocketDev/evernode-sdk/issues/4) to receive updates about the Evernode SDK.
+EvernodeSDKの最新情報を受け取るには[こちらから登録](https://github.com/HotPocketDev/evernode-sdk/issues/4)してください。
