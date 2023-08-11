@@ -51,6 +51,10 @@ HotPocketはEvernodeのスマートコントラクトの実行およびコンセ
   - [テナントクライアント](evernode/reference-api-tenant.md)
   - [イベント](evernode/reference-api-events.md)
 
+### EverPocket contract library
+
+- [NodeJs library](https://www.npmjs.com/package/everpocket-nodejs-contract) ([source](https://github.com/EvernodeXRPL/everpocket-nodejs-contract))
+
 ### コミュニティライブラリ
 
 - HotPocket用XRPLベースの分散型鍵管理フレームワーク DKM - [紹介](https://devpost.com/software/decentralized-key-management-evernode) | [ソース](https://github.com/wojake/DKM) (by [@wojake](https://github.com/wojake))
